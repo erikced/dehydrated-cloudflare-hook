@@ -36,8 +36,7 @@ func addChallengeRecord(c cfdns.Client, domainName string, token string) error {
 	if err != nil {
 		return err
 	}
-	rec := cfdns.DnsRecord{Type: "TXT", Name: challengePrefix + domainName, Content: token}
-	newRec, err := c.CreateDnsRecord(zoneId, rec)
+	newRec, err := c.CreateDnsRecord(zoneId, "TXT", challengePrefix+domainName, token, nil, nil, nil)
 	if err != nil {
 		return err
 	}
